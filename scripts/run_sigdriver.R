@@ -201,7 +201,7 @@ Options:
 
 if (!file.exists(out_path)){
   print("Creating output directory")
-  dir.create(out_path)
+  dir.create(out_path, recursive = TRUE)
 }
 
 
