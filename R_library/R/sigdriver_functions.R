@@ -48,12 +48,13 @@ merge_allsignature_byrank_samples <- function(sampleinfo,sigexpinfo){
 }
 
 merge_signature_samples <- function(sampleinfo,sigexpinfo,signature_test,thresholdhypmutation){
-	signorminfo = melt(colSums(sigexpinfo))
+	require(reshape2)
+	signorminfo = reshape2::melt(colSums(sigexpinfo))
 	signorminfo$ID = rownames(signorminfo)
 	colnames(signorminfo)[1] = "total_variants"
 	
 	if (!grepl(",",signature_test)){
-		sigtestexpinfo = melt(sigexpinfo[signature_test,])
+		sigtestexpinfo = reshape2::melt(sigexpinfo[signature_test,])
 	}else{
 	  sigsincl = strsplit(signature_test,",")
 	  sigsincl = sigsincl[[1]]
