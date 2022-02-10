@@ -200,6 +200,11 @@ Options:
 	}
 }
 
+if (!file.exists(out_path)){
+  print("Creating output directory")
+  dir.create(out_path, recursive = TRUE)
+}
+
 require(sigDriver)
 sigDriver_annotate(signature_test=signature_test,
                    variant_file=variant_file,
