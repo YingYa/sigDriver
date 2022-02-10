@@ -26,6 +26,7 @@ signatureRepresentationAdjustment <- function(gns,
                              entityFactor=1,
                              binStatsList=NULL,
                              verbose=TRUE){
+	require(parallel)
    print("Calculating signature-bin distribution")
    print(paste(variantFactor,entityFactor))
 		if (is.null(binStatsList)){
@@ -99,7 +100,8 @@ signatureRepresentationAdjustment <- function(gns,
 			#weighting of background
 			binSignatureWeights[which(rownames(binSignatureWeights) %in% backgroundsigslist),] = 1
 		}
-
+
+
 
 		#overweight disabled
 		if (verbose){
